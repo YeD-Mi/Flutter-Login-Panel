@@ -1,6 +1,7 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:login/color.dart';
 import 'package:login/views/loginpage.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,42 +11,60 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: backColor,
       appBar: AppBar(
-          backgroundColor: Colors.deepPurple.shade700,
+          centerTitle: true,
+          backgroundColor: primaryColor,
           title: Center(child: Text("Neyim Var?"))),
       body: Padding(
-        padding: const EdgeInsets.only(
-            right: 15.0, left: 15.0, top: 10.0, bottom: 40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/foto1.jpg',
-              height: size.height * .65,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.deepPurple.shade700),
-                    onPressed: () {
-                      print('Giriş Yap');
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
-                    },
-                    child: Text('Giriş Yap')),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.deepPurple.shade700),
-                    onPressed: () {
-                      print('Kayıt ol');
-                    },
-                    child: Text('Kayıt Ol'))
-              ],
-            ),
-          ],
+        padding: const EdgeInsets.all(5),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  'assets/images/foto1.jpg',
+                  height: size.height * .7,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(primary: primaryColor),
+                        onPressed: () {
+                          print('Giriş Yap');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        },
+                        child: Text(
+                          'Giriş Yap',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                          ),
+                        )),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(primary: primaryColor),
+                        onPressed: () {
+                          print('Kayıt ol');
+                        },
+                        child: Text(
+                          'Kayıt Ol',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                          ),
+                        ))
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
