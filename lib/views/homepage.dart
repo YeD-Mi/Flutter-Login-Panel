@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:login/color.dart';
 import 'package:login/views/loginpage.dart';
+import 'package:login/views/registerpage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,7 +16,14 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: primaryColor,
-          title: Center(child: Text("Neyim Var?"))),
+          title: Center(
+              child: Text(
+            "Neyim Var?",
+            style: TextStyle(
+              fontSize: 24.0,
+              fontFamily: 'Teko',
+            ),
+          ))),
       body: Padding(
         padding: const EdgeInsets.all(5),
         child: SingleChildScrollView(
@@ -46,18 +54,24 @@ class HomePage extends StatelessWidget {
                         child: Text(
                           'Giriş Yap',
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 20.0,
+                            fontFamily: 'Teko',
                           ),
                         )),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: primaryColor),
                         onPressed: () {
                           print('Kayıt ol');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RegisterPage()));
                         },
                         child: Text(
                           'Kayıt Ol',
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 20.0,
+                            fontFamily: 'Teko',
                           ),
                         ))
                   ],

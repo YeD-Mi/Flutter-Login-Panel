@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
 import 'package:login/color.dart';
+import 'package:login/views/menupage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -23,9 +24,15 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: backColor,
       appBar: AppBar(
-          centerTitle: true,
           backgroundColor: primaryColor,
-          title: Center(child: Text("Neyim Var?"))),
+          title: Center(
+              child: Text(
+            'Neyim Var Giriş Paneli',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontFamily: 'Teko',
+            ),
+          ))),
       body: Padding(
         padding: const EdgeInsets.all(5.0),
         child: SingleChildScrollView(
@@ -92,11 +99,15 @@ class _LoginPageState extends State<LoginPage> {
                 height: size.height * 0.005,
               ),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MenuPage()));
+                  },
                   child: Text(
                     'Giriş Yap',
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 20.0,
+                      fontFamily: 'Teko',
                     ),
                   ))
             ],
