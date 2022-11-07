@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -84,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         cursorColor: primaryColor,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.baby_changing_station_sharp),
-                          hintText: 'Yaş',
+                          hintText: 'Doğum Yılı',
                         )),
                     TextField(
                       controller: emailController,
