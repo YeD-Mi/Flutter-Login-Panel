@@ -32,6 +32,21 @@ class _MenuPageState extends State<MenuPage> {
               'Neyim Var Ana Sayfa',
               style: TextStyle(fontFamily: 'Teko', fontSize: 24),
             )),
+        drawer: Drawer(
+            child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/images/mryed.jpg'),
+              ),
+              accountName: Text('MrYed'),
+              accountEmail: Text('bilgi@mryed.com'),
+            ),
+            Text('Hello'),
+          ],
+        )),
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Ana Sayfa'),
