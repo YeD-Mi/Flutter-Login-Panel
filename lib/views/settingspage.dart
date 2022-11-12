@@ -14,15 +14,17 @@ class _SettingsPage extends State<SettingsPage> {
   bool bildirim = false;
   bool ses = false;
   bool oneri = false;
+  bool koyumod = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Neyim Var Ayarlar')),
+      appBar: AppBar(title: Center(child: Text('Neyim Var Ayarlar'))),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Bildirimler',
@@ -40,6 +42,7 @@ class _SettingsPage extends State<SettingsPage> {
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Ses',
@@ -57,6 +60,7 @@ class _SettingsPage extends State<SettingsPage> {
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Akıllı Öneriler',
@@ -67,6 +71,24 @@ class _SettingsPage extends State<SettingsPage> {
                   onChanged: (value) {
                     setState(() {
                       oneri = value;
+                    });
+                  },
+                  activeColor: primaryColor,
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Koyu Mod',
+                  style: TextStyle(fontFamily: 'Teko', fontSize: 24),
+                ),
+                Switch(
+                  value: koyumod,
+                  onChanged: (value) {
+                    setState(() {
+                      koyumod = value;
                     });
                   },
                   activeColor: primaryColor,
