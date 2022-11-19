@@ -3,6 +3,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:login/color.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:async';
+import 'dart:io';
 
 class ProfilPage extends StatefulWidget {
   const ProfilPage({super.key});
@@ -12,6 +15,29 @@ class ProfilPage extends StatefulWidget {
 }
 
 class _ProfilPageState extends State<ProfilPage> {
+  final ImagePicker _pickerImage = ImagePicker();
+  dynamic _pickImage;
+  PickedFile? placeImage;
+
+  void _onImageButtonPressed(ImageSource source,
+      {BuildContext? context}) async {
+    try {
+      final pickedFile = await _pickerImage.getImage(
+        source: source,
+      );
+      setState(() {
+        placeImage = pickedFile;
+        print("dosyaya geldim: $placeImage");
+        if (placeImage != null) {}
+      });
+    } catch (e) {
+      setState(() {
+        _pickImage = e;
+        print("Image Error: " + _pickImage);
+      });
+    }
+  }
+
   void customLaunch(command) async {
     if (await canLaunch(command)) {
       await launch(command);
@@ -42,17 +68,33 @@ class _ProfilPageState extends State<ProfilPage> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: size.height * 0.08),
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: CircleAvatar(
-              radius: size.height * .08,
-              backgroundImage: AssetImage('assets/images/mryed.jpg'),
-            ),
+          padding: EdgeInsets.only(top: size.height * 0.07),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: CircleAvatar(
+                  radius: size.height * .08,
+                  backgroundImage: AssetImage('assets/images/mryed.jpg'),
+                ),
+              ),
+              InkWell(
+                  onTap: () {
+                    print('Degistir şu resmi');
+                    _onImageButtonPressed(ImageSource.camera, context: context);
+                  }, //camera yerine gallery yazarak galeriden görsel alabiliriz.
+                  child: Container(
+                      decoration: BoxDecoration(
+                          color: backColor,
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.camera_alt_outlined))))
+            ],
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: size.height * 0.24),
+          padding: EdgeInsets.only(top: size.height * 0.29),
           child: Align(
             alignment: Alignment.topCenter,
             child: Text(
@@ -66,7 +108,7 @@ class _ProfilPageState extends State<ProfilPage> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: size.height * 0.31),
+          padding: EdgeInsets.only(top: size.height * 0.35),
           child: Align(
             alignment: Alignment.topCenter,
             child: Row(
@@ -143,7 +185,7 @@ class _ProfilPageState extends State<ProfilPage> {
         ),
         Padding(
           padding: EdgeInsets.only(
-              top: size.height * 0.4,
+              top: size.height * 0.44,
               left: size.width * 0.05,
               right: size.width * 0.04),
           child: Column(
